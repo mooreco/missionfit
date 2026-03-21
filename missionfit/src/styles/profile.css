@@ -1,0 +1,160 @@
+.profile-page {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 5.5rem;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.profile-page h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a2744;
+  margin-bottom: 1.25rem;
+}
+
+.profile-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+}
+
+.profile-card-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.profile-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.profile-field:last-child {
+  border-bottom: none;
+}
+
+.pf-label {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.pf-value {
+  font-size: 0.9rem;
+  color: #1a2744;
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Edit mode inputs */
+.profile-field input,
+.profile-field select {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  outline: none;
+  text-align: right;
+  max-width: 160px;
+}
+
+.profile-field input:focus,
+.profile-field select:focus {
+  border-color: #1a2744;
+  box-shadow: 0 0 0 2px rgba(26, 39, 68, 0.1);
+}
+
+/* Stats grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.stat-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.stat-box .stat-num {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #1a2744;
+}
+
+.stat-box .stat-lbl {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b7280;
+}
+
+/* Buttons */
+.profile-btn {
+  width: 100%;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.profile-btn.primary {
+  background: #1a2744;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.profile-btn.primary:hover {
+  background: #0f172a;
+}
+
+.profile-btn.danger {
+  background: #fff;
+  color: #ef4444;
+  border: 1px solid #fecaca;
+}
+
+.profile-btn.danger:hover {
+  background: #fef2f2;
+}
+
+.profile-btn.secondary {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.profile-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.profile-actions .profile-btn {
+  flex: 1;
+}
+
+.profile-saved {
+  text-align: center;
+  padding: 0.5rem;
+  background: #f0fdf4;
+  color: #16a34a;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,216 @@
+.weighin-page {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem 1rem 5.5rem;
+  min-height: 100vh;
+  background: #f8f9fa;
+}
+
+.weighin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.weighin-header h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.weighin-header a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+/* Form card */
+.weighin-form-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  margin-bottom: 1.25rem;
+}
+
+.weighin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.weighin-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.weighin-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.weighin-form .form-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.weighin-form .form-field input {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.weighin-form .form-field input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.weighin-save {
+  width: 100%;
+  padding: 0.65rem;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.weighin-save:hover {
+  background: #1d4ed8;
+}
+
+.weighin-success {
+  text-align: center;
+  padding: 0.5rem;
+  background: #f0fdf4;
+  color: #16a34a;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+/* Stats row */
+.weighin-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.85rem;
+  border: 1px solid #e5e7eb;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.stat-value.positive {
+  color: #16a34a;
+}
+
+.stat-value.negative {
+  color: #dc2626;
+}
+
+.stat-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b7280;
+  margin-top: 0.15rem;
+}
+
+/* Section headings */
+.weighin-section {
+  margin-top: 1.25rem;
+}
+
+.weighin-section h2 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+/* Recent list */
+.recent-weighins {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.recent-date {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.recent-weight {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.recent-change {
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 60px;
+  text-align: right;
+}
+
+.recent-change.loss {
+  color: #16a34a;
+}
+
+.recent-change.gain {
+  color: #dc2626;
+}
+
+.recent-change.same {
+  color: #9ca3af;
+}
+
+/* Chart */
+.chart-wrapper {
+  background: #fff;
+  border-radius: 10px;
+  padding: 0.75rem 0.5rem;
+  border: 1px solid #e5e7eb;
+}
+
+.chart-empty {
+  text-align: center;
+  color: #9ca3af;
+  font-size: 0.85rem;
+  padding: 2rem 0;
+}

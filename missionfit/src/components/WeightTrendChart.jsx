@@ -34,12 +34,12 @@ export default function WeightTrendChart({ weighIns, goalWeight }) {
     <div className="chart-wrapper">
       <ResponsiveContainer width="100%" height={220}>
         <LineChart data={data} margin={{ top: 8, right: 12, bottom: 4, left: -12 }}>
-          <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+          <CartesianGrid strokeDasharray="3 3" stroke="#e0e0e0" />
           <XAxis
             dataKey="label"
             tick={{ fontSize: 11, fill: "#6b7280" }}
             tickLine={false}
-            axisLine={{ stroke: "#e5e7eb" }}
+            axisLine={{ stroke: "#e0e0e0" }}
           />
           <YAxis
             domain={[minW, maxW]}
@@ -52,27 +52,27 @@ export default function WeightTrendChart({ weighIns, goalWeight }) {
             labelStyle={{ fontWeight: 600 }}
             contentStyle={{
               borderRadius: 8,
-              border: "1px solid #e5e7eb",
+              border: "1px solid #e0e0e0",
               fontSize: 13,
             }}
           />
           <Line
             type="monotone"
             dataKey="weight"
-            stroke="#2563eb"
+            stroke="#1D406A"
             strokeWidth={2}
-            dot={{ r: 4, fill: "#2563eb" }}
+            dot={{ r: 4, fill: "#1D406A" }}
             activeDot={{ r: 6 }}
           />
           {goalWeight && (
             <ReferenceLine
               y={goalWeight}
-              stroke="#16a34a"
+              stroke="#06D6A0"
               strokeDasharray="6 4"
               label={{
                 value: `Goal: ${goalWeight}`,
                 position: "right",
-                fill: "#16a34a",
+                fill: "#06D6A0",
                 fontSize: 11,
                 fontWeight: 600,
               }}

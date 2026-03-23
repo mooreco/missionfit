@@ -14,6 +14,24 @@ import {
 import { db } from "../firebase/config";
 import { useAuth } from "./useAuth.jsx";
 
+const MEAL_SLOTS = ["breakfast", "lunch", "dinner", "snack"];
+
+/**
+ * Auto-assign a slot based on creation time for legacy entries.
+ */
+function guessSlot(entry) {
+  if (entry.slot && MEAL_SLOTS.includes(entry.slot)) return entry.slot;
+  // Try to guess from createdAt
+  if (entry.createdAt) {
+    const hour = new Date(entry.createdAt).getHours();
+    if (hour < 10) return "breakfast";
+    if (hour < 14) return "lunch";
+    if (hour < 18) return "dinner";
+    return "snack";
+  }
+  return "snack";
+}
+
 export function useFoodLog(dateStr) {
   const { user, profile } = useAuth();
   const [entries, setEntries] = useState([]);
@@ -38,7 +56,13 @@ export function useFoodLog(dateStr) {
     const q = query(colRef, orderBy("createdAt", "asc"));
 
     const unsub = onSnapshot(q, (snap) => {
-      setEntries(snap.docs.map((d) => ({ id: d.id, ...d.data() })));
+      setEntries(
+        snap.docs.map((d) => {
+          const data = { id: d.id, ...d.data() };
+          data.slot = guessSlot(data);
+          return data;
+        })
+      );
       setLoading(false);
     });
 
@@ -49,7 +73,6 @@ export function useFoodLog(dateStr) {
   const fetchRecent = useCallback(async () => {
     if (!user) return;
 
-    // Query recent entries across all dates via collectionGroup
     const q = query(
       collectionGroup(db, "entries"),
       orderBy("createdAt", "desc"),
@@ -62,7 +85,6 @@ export function useFoodLog(dateStr) {
       const recent = [];
 
       for (const d of snap.docs) {
-        // Only include docs belonging to this user
         const pathParts = d.ref.path.split("/");
         if (pathParts[1] !== user.uid) continue;
 
@@ -73,12 +95,11 @@ export function useFoodLog(dateStr) {
         if (seen.has(key)) continue;
         seen.add(key);
         recent.push(data);
-        if (recent.length >= 5) break;
+        if (recent.length >= 8) break;
       }
 
       setRecentFoods(recent);
     } catch {
-      // collectionGroup index may not exist yet — degrade gracefully
       setRecentFoods([]);
     }
   }, [user]);
@@ -87,7 +108,7 @@ export function useFoodLog(dateStr) {
     fetchRecent();
   }, [fetchRecent, dateStr]);
 
-  async function addEntry(food) {
+  async function addEntry(food, slot = "snack") {
     if (!user) return;
     const colRef = collection(
       db,
@@ -99,6 +120,7 @@ export function useFoodLog(dateStr) {
     );
     await addDoc(colRef, {
       ...food,
+      slot,
       createdAt: new Date().toISOString(),
     });
     fetchRecent();
@@ -111,6 +133,15 @@ export function useFoodLog(dateStr) {
     );
   }
 
+  // Group entries by slot
+  function getEntriesBySlot(slot) {
+    return entries.filter((e) => e.slot === slot);
+  }
+
+  function getSlotPoints(slot) {
+    return getEntriesBySlot(slot).reduce((s, e) => s + (e.points || 0), 0);
+  }
+
   const totalPoints = entries.reduce((sum, e) => sum + (e.points || 0), 0);
   const remainingPoints = dailyBudget - totalPoints;
 
@@ -119,9 +150,12 @@ export function useFoodLog(dateStr) {
     loading,
     addEntry,
     deleteEntry,
+    getEntriesBySlot,
+    getSlotPoints,
     totalPoints,
     remainingPoints,
     dailyBudget,
     recentFoods,
+    MEAL_SLOTS,
   };
 }

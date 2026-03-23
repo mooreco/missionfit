@@ -3,37 +3,92 @@
   margin: 0 auto;
   padding: 1rem 1rem 5.5rem;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--color-bg);
 }
 
 /* Header / budget bar */
 .foodlog-header {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: var(--color-bg);
   margin: -1rem -1rem 0;
-  padding: 1rem 1rem 0.75rem;
-  border-bottom: 1px solid #e5e7eb;
+  padding: env(safe-area-inset-top, 1rem) 1rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
   z-index: 10;
+}
+
+.foodlog-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
 }
 
 .foodlog-header h1 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  color: var(--color-secondary);
 }
 
-.foodlog-header h1 a {
+/* Menu */
+.foodlog-menu-wrap {
+  position: relative;
+}
+
+.foodlog-menu-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.3rem 0.6rem;
+  font-size: 1.1rem;
+  color: var(--color-text);
+  cursor: pointer;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.foodlog-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  min-width: 180px;
+  z-index: 50;
+  overflow: hidden;
+}
+
+.foodlog-dropdown button {
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  background: var(--color-bg);
+  text-align: left;
   font-size: 0.85rem;
   font-weight: 500;
-  color: #2563eb;
-  text-decoration: none;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: background 0.1s;
 }
 
+.foodlog-dropdown button:hover,
+.foodlog-dropdown button:active {
+  background: var(--color-divider);
+}
+
+.foodlog-dropdown button + button {
+  border-top: 1px solid var(--color-divider);
+}
+
+.foodlog-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+}
+
+/* Budget bar */
 .budget-bar {
   display: flex;
   justify-content: space-between;
@@ -47,21 +102,21 @@
 }
 
 .budget-remaining.over {
-  color: #dc2626;
+  color: var(--color-accent);
 }
 
 .budget-remaining.ok {
-  color: #16a34a;
+  color: var(--color-success);
 }
 
 .budget-detail {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--color-muted);
 }
 
 .budget-progress {
   height: 6px;
-  background: #e5e7eb;
+  background: var(--color-border);
   border-radius: 3px;
   overflow: hidden;
   margin-bottom: 0.25rem;
@@ -71,6 +126,57 @@
   height: 100%;
   border-radius: 3px;
   transition: width 0.3s;
+}
+
+/* Weekly points banner */
+.weekly-banner {
+  margin: 0 -1rem;
+  padding: 0.55rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  background: rgba(29, 64, 106, 0.06);
+  color: var(--color-secondary);
+  text-align: center;
+}
+
+.weekly-banner.exhausted {
+  background: rgba(239, 71, 111, 0.08);
+  color: var(--color-accent);
+}
+
+/* Favorite star on entries */
+.fav-star {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  color: var(--color-border);
+  flex-shrink: 0;
+}
+
+.fav-star.filled {
+  color: var(--color-primary);
+}
+
+/* Favorite chips in modal */
+.chip.fav-chip {
+  border-color: var(--color-primary);
+  background: rgba(255, 209, 102, 0.12);
+  color: var(--color-text);
+}
+
+.chip.fav-chip:active {
+  background: var(--color-primary);
+  color: var(--color-text);
+  border-color: var(--color-primary);
+}
+
+.add-modal-empty-hint {
+  font-size: 0.8rem;
+  color: var(--color-muted-light);
+  margin: 0;
 }
 
 /* Date selector */
@@ -84,72 +190,271 @@
 
 .date-selector button {
   background: none;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   padding: 0.3rem 0.6rem;
   font-size: 1rem;
   cursor: pointer;
-  color: #374151;
+  color: var(--color-text);
   line-height: 1;
 }
 
 .date-selector span {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--color-secondary);
   min-width: 140px;
   text-align: center;
 }
 
-/* Sections */
-.foodlog-section {
-  margin-top: 1.25rem;
-}
-
-.foodlog-section h2 {
-  font-size: 0.8rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: #6b7280;
-  margin-bottom: 0.5rem;
-}
-
-/* Chip buttons for zero-point and recent foods */
-.chip-row {
+/* Meal slot cards */
+.meal-slots {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.slot-card {
+  background: var(--color-bg);
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  background: rgba(29, 64, 106, 0.04);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.slot-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
   gap: 0.4rem;
 }
 
+.slot-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.slot-pts {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.slot-add-btn {
+  width: 26px;
+  height: 26px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 1rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.slot-add-btn:active {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+}
+
+/* Entries within a slot */
+.slot-entries {
+  display: flex;
+  flex-direction: column;
+}
+
+.slot-entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.85rem;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.slot-entry:last-child {
+  border-bottom: none;
+}
+
+.entry-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.entry-points {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.entry-delete {
+  background: none;
+  border: none;
+  color: var(--color-border);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0 0 0 0.25rem;
+  line-height: 1;
+}
+
+.entry-delete:hover,
+.entry-delete:active {
+  color: var(--color-accent);
+}
+
+/* Empty slot tap target */
+.slot-empty-add {
+  width: 100%;
+  padding: 0.6rem 0.85rem;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-size: 0.8rem;
+  color: var(--color-muted-light);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.slot-empty-add:active {
+  color: var(--color-secondary);
+}
+
+/* =============================================
+   ADD FOOD BOTTOM SHEET MODAL
+   ============================================= */
+
+.add-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: 0;
+}
+
+.add-modal {
+  background: var(--color-bg);
+  border-radius: 16px 16px 0 0;
+  padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  max-width: 500px;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease forwards;
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.add-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.add-modal-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.add-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  color: var(--color-muted-light);
+  cursor: pointer;
+  padding: 0.2rem;
+  line-height: 1;
+}
+
+/* Sections inside modal */
+.add-modal-section {
+  margin-bottom: 1rem;
+}
+
+.add-modal-section h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  margin-bottom: 0.4rem;
+}
+
+.add-modal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* Chip buttons (shared) */
 .chip {
   padding: 0.35rem 0.7rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: #fff;
+  background: var(--color-bg);
   font-size: 0.8rem;
-  color: #374151;
+  color: var(--color-text);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
 
 .chip:active {
-  background: #2563eb;
-  color: #fff;
-  border-color: #2563eb;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
 }
 
 .chip.zero {
-  border-color: #bbf7d0;
-  background: #f0fdf4;
-  color: #166534;
+  border-color: rgba(6, 214, 160, 0.3);
+  background: rgba(6, 214, 160, 0.08);
+  color: var(--color-text);
 }
 
 .chip.zero:active {
-  background: #16a34a;
-  color: #fff;
-  border-color: #16a34a;
+  background: var(--color-success);
+  color: var(--color-white);
+  border-color: var(--color-success);
+}
+
+.chip.recipe-chip {
+  border-color: rgba(29, 64, 106, 0.2);
+  background: rgba(29, 64, 106, 0.06);
+  color: var(--color-secondary);
+}
+
+.chip.recipe-chip:active {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
 }
 
 .chip .chip-pts {
@@ -159,56 +464,56 @@
   font-size: 0.75rem;
 }
 
-/* Add food form */
-.add-food-toggle {
+/* Custom entry button */
+.add-modal-custom-btn {
   width: 100%;
   padding: 0.65rem;
-  border: 2px dashed #d1d5db;
+  border: 2px dashed var(--color-border);
   border-radius: 10px;
-  background: #fff;
-  font-size: 0.9rem;
-  color: #2563eb;
+  background: var(--color-bg);
+  font-size: 0.85rem;
+  color: var(--color-secondary);
   font-weight: 600;
   cursor: pointer;
   transition: border-color 0.15s;
+  margin-top: 0.5rem;
 }
 
-.add-food-toggle:hover {
-  border-color: #2563eb;
+.add-modal-custom-btn:active {
+  border-color: var(--color-secondary);
 }
 
-.add-food-form {
-  background: #fff;
-  border-radius: 10px;
-  padding: 1rem;
-  border: 1px solid #e5e7eb;
+/* Custom form inside modal */
+.add-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
-.add-food-form .form-field {
+.add-modal-form .form-field {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  margin-bottom: 0.6rem;
 }
 
-.add-food-form .form-field label {
+.add-modal-form .form-field label {
   font-size: 0.75rem;
   font-weight: 600;
-  color: #374151;
+  color: var(--color-text);
 }
 
-.add-food-form .form-field input {
+.add-modal-form .form-field input {
   padding: 0.5rem 0.6rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   font-size: 0.9rem;
   outline: none;
   transition: border-color 0.15s;
 }
 
-.add-food-form .form-field input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+.add-modal-form .form-field input:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(29, 64, 106, 0.1);
 }
 
 .nutrient-grid {
@@ -223,30 +528,30 @@
   gap: 0.5rem;
   margin: 0.5rem 0;
   font-size: 0.85rem;
-  color: #374151;
+  color: var(--color-text);
 }
 
 .purine-field input[type="checkbox"] {
   width: 18px;
   height: 18px;
-  accent-color: #2563eb;
+  accent-color: var(--color-secondary);
 }
 
 .points-preview {
   text-align: center;
   padding: 0.5rem;
-  margin: 0.5rem 0;
-  background: #f0f9ff;
+  margin: 0.25rem 0;
+  background: rgba(29, 64, 106, 0.06);
   border-radius: 8px;
   font-size: 0.9rem;
-  color: #1e40af;
+  color: var(--color-secondary);
   font-weight: 600;
 }
 
 .add-food-actions {
   display: flex;
   gap: 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .add-food-actions button {
@@ -260,71 +565,28 @@
 }
 
 .btn-add {
-  background: #2563eb;
-  color: #fff;
+  background: var(--color-secondary);
+  color: var(--color-white);
 }
 
 .btn-add:hover {
-  background: #1d4ed8;
+  opacity: 0.9;
+}
+
+.btn-add:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .btn-cancel {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--color-divider);
+  color: var(--color-text);
 }
 
-/* Entry list */
-.entry-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.entry-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #fff;
-  padding: 0.6rem 0.75rem;
-  border-radius: 8px;
-  border: 1px solid #e5e7eb;
-}
-
-.entry-name {
-  font-size: 0.9rem;
-  color: #1a1a2e;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.entry-points {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #2563eb;
-  margin-left: 0.5rem;
-  white-space: nowrap;
-}
-
-.entry-delete {
-  background: none;
-  border: none;
-  color: #9ca3af;
-  font-size: 1.1rem;
-  cursor: pointer;
-  padding: 0 0 0 0.5rem;
-  line-height: 1;
-}
-
-.entry-delete:hover {
-  color: #dc2626;
-}
-
+/* Empty state */
 .empty-state {
   text-align: center;
-  color: #9ca3af;
+  color: var(--color-muted-light);
   font-size: 0.85rem;
   padding: 2rem 0;
 }

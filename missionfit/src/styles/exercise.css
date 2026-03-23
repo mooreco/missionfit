@@ -1,0 +1,477 @@
+/* Exercise card on Dashboard */
+.exercise-card-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.exercise-progress {
+  flex: 1;
+}
+
+.exercise-progress-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-bottom: 0.3rem;
+}
+
+.exercise-progress-bar {
+  height: 8px;
+  background: var(--color-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.exercise-progress-fill {
+  height: 100%;
+  background: var(--color-success);
+  border-radius: 4px;
+  transition: width 0.3s;
+}
+
+.exercise-progress-detail {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  margin-top: 0.2rem;
+}
+
+.exercise-add-btn {
+  padding: 0.45rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+
+.exercise-add-btn:active {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+}
+
+/* Exercise modal */
+.exercise-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: 0;
+}
+
+.exercise-modal {
+  background: var(--color-bg);
+  border-radius: 16px 16px 0 0;
+  padding: 1.25rem 1.25rem calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  max-width: 500px;
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  animation: exerciseSlideUp 0.25s ease forwards;
+}
+
+@keyframes exerciseSlideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.exercise-modal h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.exercise-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.exercise-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.exercise-form .form-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.exercise-form .form-field input,
+.exercise-form .form-field select {
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  background: var(--color-bg);
+}
+
+.exercise-form .form-field input:focus,
+.exercise-form .form-field select:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(29, 64, 106, 0.1);
+}
+
+.exercise-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.exercise-form-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.exercise-form-actions button {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.exercise-save-btn {
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.exercise-cancel-btn {
+  background: var(--color-divider);
+  color: var(--color-text);
+}
+
+/* Today's exercise entries */
+.exercise-today-list {
+  margin-top: 0.75rem;
+}
+
+.exercise-today-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 0.8rem;
+}
+
+.exercise-today-item:last-child {
+  border-bottom: none;
+}
+
+.exercise-today-activity {
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.exercise-today-duration {
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.exercise-today-delete {
+  background: none;
+  border: none;
+  color: var(--color-border);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.exercise-today-delete:active {
+  color: var(--color-accent);
+}
+
+/* Health metrics on Profile */
+.health-section {
+  margin-top: 0.5rem;
+}
+
+.health-section-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--color-divider);
+}
+
+.health-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0;
+  font-size: 0.8rem;
+}
+
+.health-label {
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.health-value {
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.health-value.in-range {
+  color: var(--color-success);
+}
+
+.health-value.borderline {
+  color: var(--color-primary);
+}
+
+.health-value.high-risk {
+  color: var(--color-accent);
+}
+
+.health-change {
+  font-size: 0.7rem;
+  margin-left: 0.3rem;
+}
+
+.health-change.improved {
+  color: var(--color-success);
+}
+
+.health-change.worsened {
+  color: var(--color-accent);
+}
+
+.health-empty {
+  font-size: 0.8rem;
+  color: var(--color-muted-light);
+  padding: 0.5rem 0;
+}
+
+.health-add-btn {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px dashed var(--color-border);
+  border-radius: 8px;
+  background: transparent;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+/* Health entry modal */
+.health-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.health-modal-form .form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.health-modal-form .form-field label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.health-modal-form .form-field input,
+.health-modal-form .form-field textarea {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.health-modal-form .form-field input:focus,
+.health-modal-form .form-field textarea:focus {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(29, 64, 106, 0.1);
+}
+
+.health-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem 0.75rem;
+}
+
+/* Travel mode banner */
+.travel-banner {
+  padding: 0.6rem 1rem;
+  background: rgba(29, 64, 106, 0.06);
+  border: 1px solid rgba(29, 64, 106, 0.15);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-secondary);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Budget recalc prompt */
+.budget-recalc-prompt {
+  background: rgba(255, 209, 102, 0.12);
+  border: 1px solid var(--color-primary);
+  border-radius: 10px;
+  padding: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.budget-recalc-text {
+  font-size: 0.85rem;
+  color: var(--color-text);
+  margin-bottom: 0.6rem;
+  line-height: 1.4;
+}
+
+.budget-recalc-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.budget-recalc-actions button {
+  flex: 1;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.recalc-update {
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.recalc-dismiss {
+  background: var(--color-divider);
+  color: var(--color-text);
+}
+
+/* Maintenance banner */
+.maintenance-banner {
+  padding: 0.6rem 1rem;
+  background: rgba(6, 214, 160, 0.08);
+  border: 1px solid rgba(6, 214, 160, 0.2);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--color-success);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.maintenance-warning {
+  padding: 0.6rem 1rem;
+  background: rgba(239, 71, 111, 0.08);
+  border: 1px solid rgba(239, 71, 111, 0.2);
+  border-radius: 10px;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.maintenance-warning-text {
+  margin-bottom: 0.5rem;
+}
+
+.maintenance-warning-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.maintenance-warning-actions button {
+  flex: 1;
+  padding: 0.4rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.maint-switch-btn {
+  background: var(--color-accent);
+  color: var(--color-white);
+}
+
+.maint-dismiss-btn {
+  background: var(--color-divider);
+  color: var(--color-text);
+}
+
+/* Profile travel toggle */
+.travel-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0;
+}
+
+.travel-toggle-label {
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  font-weight: 500;
+}
+
+.travel-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  background: var(--color-border);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  padding: 0;
+}
+
+.travel-switch.active {
+  background: var(--color-secondary);
+}
+
+.travel-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--color-white);
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+.travel-switch.active::after {
+  transform: translateX(20px);
+}
+
+.travel-active-since {
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  margin-top: 0.15rem;
+}

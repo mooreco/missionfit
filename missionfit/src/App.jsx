@@ -6,6 +6,10 @@ import DashboardPage from "./pages/DashboardPage";
 import FoodLogPage from "./pages/FoodLogPage";
 import WeighInPage from "./pages/WeighInPage";
 import ProfilePage from "./pages/ProfilePage";
+import MedalsPage from "./pages/MedalsPage";
+import RecipesPage from "./pages/RecipesPage";
+import RecipeEditPage from "./pages/RecipeEditPage";
+import MealPlanPage from "./pages/MealPlanPage";
 import BottomNav from "./components/BottomNav";
 import "./styles/auth.css";
 
@@ -42,6 +46,10 @@ function AppRoutes() {
         <Route path="/" element={<DashboardPage />} />
         <Route path="/log" element={<FoodLogPage />} />
         <Route path="/weigh-in" element={<WeighInPage />} />
+        <Route path="/medals" element={<MedalsPage />} />
+        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/recipes/:id" element={<RecipeEditPage />} />
+        <Route path="/meal-plan" element={<MealPlanPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>

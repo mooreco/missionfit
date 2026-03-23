@@ -1,0 +1,488 @@
+/* =============================================
+   MEAL PLAN PAGE
+   ============================================= */
+
+.mealplan-page {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 5.5rem;
+  min-height: 100vh;
+  background: var(--color-bg);
+}
+
+.mealplan-header {
+  margin-bottom: 1rem;
+}
+
+.mealplan-header h1 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.week-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.week-nav button {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.3rem 0.6rem;
+  font-size: 1rem;
+  cursor: pointer;
+  color: var(--color-text);
+  line-height: 1;
+  transition: background 0.15s;
+}
+
+.week-nav button:hover {
+  background: var(--color-divider);
+}
+
+.week-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+  min-width: 180px;
+  text-align: center;
+}
+
+.mealplan-empty {
+  text-align: center;
+  color: var(--color-muted-light);
+  font-size: 0.9rem;
+  padding: 3rem 1rem;
+}
+
+/* Toolbar */
+.mealplan-toolbar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.grocery-toggle,
+.recipes-link-btn {
+  flex: 1;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.grocery-toggle.active {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+}
+
+.recipes-link-btn:hover {
+  background: var(--color-divider);
+}
+
+/* Grocery panel */
+.grocery-panel {
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--color-border);
+  margin-bottom: 1rem;
+}
+
+.grocery-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.grocery-panel-header h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.grocery-copy-btn {
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  color: var(--color-muted);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.grocery-copy-btn:active {
+  background: var(--color-divider);
+}
+
+.grocery-empty {
+  font-size: 0.85rem;
+  color: var(--color-muted-light);
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.grocery-category {
+  margin-bottom: 0.75rem;
+}
+
+.grocery-category:last-child {
+  margin-bottom: 0;
+}
+
+.grocery-cat-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 0.25rem;
+  padding-left: 0.35rem;
+  border-left: 3px solid var(--color-primary);
+}
+
+.grocery-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.grocery-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.35rem 0 0.35rem 0.25rem;
+  border-bottom: 1px solid var(--color-divider);
+  font-size: 0.85rem;
+}
+
+.grocery-item:last-child {
+  border-bottom: none;
+}
+
+.grocery-item.checked .grocery-name {
+  text-decoration: line-through;
+  color: var(--color-muted-light);
+}
+
+.grocery-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 1;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.grocery-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-success);
+  flex-shrink: 0;
+}
+
+.grocery-name {
+  color: var(--color-text);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.grocery-qty {
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Day cards */
+.mealplan-days {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.day-card {
+  background: var(--color-bg);
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.day-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 0.85rem;
+  background: rgba(29, 64, 106, 0.04);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.day-date {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+.day-points {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-muted);
+}
+
+.day-points.over {
+  color: var(--color-accent);
+}
+
+/* Meal slots */
+.meal-slot {
+  padding: 0.5rem 0.85rem;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.meal-slot:last-child {
+  border-bottom: none;
+}
+
+.meal-slot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.25rem;
+}
+
+.meal-slot-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-muted-light);
+}
+
+.meal-add-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 0.9rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+}
+
+.meal-add-btn:hover {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
+}
+
+.meal-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.meal-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0;
+}
+
+.meal-item-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meal-item-pts {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.meal-item-remove {
+  background: none;
+  border: none;
+  color: var(--color-border);
+  font-size: 0.75rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.meal-item-remove:hover {
+  color: var(--color-accent);
+}
+
+/* =============================================
+   ADD MEAL MODAL
+   ============================================= */
+
+.meal-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  z-index: 200;
+  padding: 0;
+}
+
+.meal-modal {
+  background: var(--color-bg);
+  border-radius: 16px 16px 0 0;
+  padding: 1.5rem 1.25rem 2rem;
+  max-width: 500px;
+  width: 100%;
+  max-height: 75vh;
+  overflow-y: auto;
+  animation: slideUp 0.25s ease forwards;
+}
+
+@keyframes slideUp {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
+.meal-modal h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin-bottom: 1rem;
+}
+
+.meal-modal h3 {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-secondary);
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+}
+
+.modal-recipe-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.modal-recipe-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  font-weight: 500;
+  transition: background 0.1s;
+  width: 100%;
+  text-align: left;
+}
+
+.modal-recipe-item:active {
+  background: var(--color-divider);
+}
+
+.modal-recipe-pts {
+  font-weight: 700;
+  color: var(--color-secondary);
+  font-size: 0.8rem;
+}
+
+/* Custom entry in modal */
+.modal-custom {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.modal-custom input[type="text"] {
+  flex: 2;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  outline: none;
+}
+
+.modal-custom input[type="number"] {
+  flex: 1;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  outline: none;
+  max-width: 70px;
+}
+
+.modal-custom input:focus {
+  border-color: var(--color-secondary);
+}
+
+.modal-custom-add {
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.modal-custom-add:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.modal-close {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-bg);
+  color: var(--color-muted);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background 0.15s;
+}
+
+.modal-close:hover {
+  background: var(--color-divider);
+}

@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 1.25rem 1rem 5.5rem;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--color-bg);
 }
 
 /* Greeting */
@@ -14,22 +14,23 @@
 .dash-greeting h1 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1a2744;
+  color: var(--color-secondary);
 }
 
 .dash-greeting p {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: var(--color-muted);
   margin-top: 0.15rem;
 }
 
 /* Card base */
 .dash-card {
-  background: #fff;
+  background: var(--color-bg);
   border-radius: 12px;
   padding: 1.25rem;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px var(--color-shadow);
+  border: 1px solid var(--color-border);
 }
 
 /* Section headings inside cards */
@@ -38,7 +39,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #6b7280;
+  color: var(--color-secondary);
   margin-bottom: 0.75rem;
 }
 
@@ -65,7 +66,7 @@
 
 .ring-bg {
   fill: none;
-  stroke: #e5e7eb;
+  stroke: var(--color-border);
   stroke-width: 10;
 }
 
@@ -93,13 +94,74 @@
 
 .ring-label {
   font-size: 0.7rem;
-  color: #6b7280;
+  color: var(--color-muted);
   margin-top: 0.15rem;
 }
 
 .ring-detail {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--color-muted);
+}
+
+/* Weekly bonus indicator */
+.weekly-indicator {
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
+.weekly-label {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin-bottom: 0.3rem;
+}
+
+.weekly-track {
+  height: 6px;
+  background: var(--color-border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.weekly-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.3s;
+}
+
+/* Freeze bank */
+.freeze-bank {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--color-divider);
+}
+
+.freeze-bank.dimmed {
+  opacity: 0.4;
+}
+
+.freeze-icon {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  background: var(--color-border);
+  border-radius: 4px;
+  padding: 0.15rem 0.35rem;
+}
+
+.freeze-count {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+.streak-freeze-msg {
+  font-size: 0.7rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  margin-top: 0.1rem;
 }
 
 /* Quick log */
@@ -111,20 +173,20 @@
 
 .quick-chip {
   padding: 0.35rem 0.75rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 20px;
-  background: #fff;
+  background: var(--color-bg);
   font-size: 0.8rem;
-  color: #374151;
+  color: var(--color-text);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
   white-space: nowrap;
 }
 
 .quick-chip:active {
-  background: #1a2744;
-  color: #fff;
-  border-color: #1a2744;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border-color: var(--color-secondary);
 }
 
 .quick-chip .qc-pts {
@@ -135,14 +197,14 @@
 }
 
 .quick-chip.add-btn {
-  background: #1a2744;
-  color: #fff;
-  border-color: #1a2744;
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
   font-weight: 600;
 }
 
 .quick-chip.add-btn:active {
-  background: #0f172a;
+  opacity: 0.85;
 }
 
 /* Milestone bar */
@@ -154,13 +216,13 @@
 
 .milestone-label {
   font-size: 0.85rem;
-  color: #374151;
+  color: var(--color-text);
   font-weight: 500;
 }
 
 .milestone-track {
   height: 10px;
-  background: #e5e7eb;
+  background: var(--color-border);
   border-radius: 5px;
   overflow: hidden;
 }
@@ -168,13 +230,13 @@
 .milestone-fill {
   height: 100%;
   border-radius: 5px;
-  background: #22c55e;
+  background: var(--color-primary);
   transition: width 0.4s ease;
 }
 
 .milestone-empty {
   font-size: 0.85rem;
-  color: #9ca3af;
+  color: var(--color-muted-light);
   text-align: center;
   padding: 0.5rem 0;
 }
@@ -199,39 +261,39 @@
 .streak-count {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #1a2744;
+  color: var(--color-secondary);
   line-height: 1.1;
 }
 
 .streak-count span {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #6b7280;
+  color: var(--color-muted);
 }
 
 .streak-longest {
   font-size: 0.75rem;
-  color: #9ca3af;
+  color: var(--color-muted-light);
   margin-top: 0.1rem;
 }
 
 .streak-grace {
   font-size: 0.7rem;
-  color: #f59e0b;
+  color: var(--color-primary);
   font-weight: 600;
   margin-top: 0.1rem;
 }
 
 /* Tip */
 .tip-card {
-  background: #f0f4ff;
-  border: none;
+  background: rgba(29, 64, 106, 0.05);
+  border-color: rgba(29, 64, 106, 0.1);
   box-shadow: none;
 }
 
 .tip-text {
   font-size: 0.9rem;
-  color: #1a2744;
+  color: var(--color-secondary);
   font-style: italic;
   line-height: 1.5;
 }

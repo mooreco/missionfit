@@ -2,7 +2,7 @@
   "name": "MissionFit: The Long Walk",
   "short_name": "MissionFit",
   "description": "A personal weight loss tracking app with a custom points system",
-  "theme_color": "#1a2744",
+  "theme_color": "#1D406A",
   "background_color": "#f8f9fa",
   "display": "standalone",
   "start_url": "/",

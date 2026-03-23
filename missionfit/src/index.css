@@ -1,3 +1,18 @@
+:root {
+  --color-primary: #FFD166;
+  --color-secondary: #1D406A;
+  --color-accent: #EF476F;
+  --color-bg: #F8F9FA;
+  --color-text: #000000;
+  --color-success: #06D6A0;
+  --color-white: #FFFFFF;
+  --color-border: #e0e0e0;
+  --color-shadow: rgba(0, 0, 0, 0.08);
+  --color-muted: #6b7280;
+  --color-muted-light: #9ca3af;
+  --color-divider: #f3f4f6;
+}
+
 *,
 *::before,
 *::after {
@@ -11,6 +26,8 @@ body {
     Ubuntu, Cantarell, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #213547;
-  background: #ffffff;
+  color: var(--color-text);
+  background: var(--color-bg);
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
 }

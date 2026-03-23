@@ -3,22 +3,23 @@
   margin: 0 auto;
   padding: 1.25rem 1rem 5.5rem;
   min-height: 100vh;
-  background: #f8f9fa;
+  background: var(--color-bg);
 }
 
 .profile-page h1 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #1a2744;
+  color: var(--color-secondary);
   margin-bottom: 1.25rem;
 }
 
 .profile-card {
-  background: #fff;
+  background: var(--color-bg);
   border-radius: 12px;
   padding: 1.25rem;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 4px var(--color-shadow);
+  border: 1px solid var(--color-border);
 }
 
 .profile-card-title {
@@ -26,7 +27,7 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: #6b7280;
+  color: var(--color-secondary);
   margin-bottom: 0.75rem;
 }
 
@@ -35,7 +36,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.55rem 0;
-  border-bottom: 1px solid #f3f4f6;
+  border-bottom: 1px solid var(--color-divider);
 }
 
 .profile-field:last-child {
@@ -44,13 +45,13 @@
 
 .pf-label {
   font-size: 0.8rem;
-  color: #6b7280;
+  color: var(--color-muted);
   font-weight: 500;
 }
 
 .pf-value {
   font-size: 0.9rem;
-  color: #1a2744;
+  color: var(--color-secondary);
   font-weight: 600;
   text-align: right;
 }
@@ -59,7 +60,7 @@
 .profile-field input,
 .profile-field select {
   padding: 0.4rem 0.5rem;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 6px;
   font-size: 0.85rem;
   outline: none;
@@ -69,8 +70,8 @@
 
 .profile-field input:focus,
 .profile-field select:focus {
-  border-color: #1a2744;
-  box-shadow: 0 0 0 2px rgba(26, 39, 68, 0.1);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 0 2px rgba(29, 64, 106, 0.1);
 }
 
 /* Stats grid */
@@ -90,7 +91,7 @@
 .stat-box .stat-num {
   font-size: 1.3rem;
   font-weight: 800;
-  color: #1a2744;
+  color: var(--color-secondary);
 }
 
 .stat-box .stat-lbl {
@@ -98,7 +99,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.03em;
-  color: #6b7280;
+  color: var(--color-muted);
 }
 
 /* Buttons */
@@ -110,32 +111,32 @@
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.15s;
+  transition: opacity 0.15s;
 }
 
 .profile-btn.primary {
-  background: #1a2744;
-  color: #fff;
+  background: var(--color-secondary);
+  color: var(--color-white);
   margin-bottom: 0.5rem;
 }
 
 .profile-btn.primary:hover {
-  background: #0f172a;
+  opacity: 0.9;
 }
 
 .profile-btn.danger {
-  background: #fff;
-  color: #ef4444;
-  border: 1px solid #fecaca;
+  background: var(--color-bg);
+  color: var(--color-accent);
+  border: 1px solid rgba(239, 71, 111, 0.3);
 }
 
 .profile-btn.danger:hover {
-  background: #fef2f2;
+  background: rgba(239, 71, 111, 0.06);
 }
 
 .profile-btn.secondary {
-  background: #f3f4f6;
-  color: #374151;
+  background: var(--color-divider);
+  color: var(--color-text);
 }
 
 .profile-actions {
@@ -148,11 +149,100 @@
   flex: 1;
 }
 
+/* Favorites */
+.profile-link-btn {
+  background: none;
+  border: none;
+  color: var(--color-secondary);
+  font-size: 0.7rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.profile-empty-hint {
+  font-size: 0.8rem;
+  color: var(--color-muted-light);
+  margin: 0;
+}
+
+.fav-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.fav-preview-chip {
+  font-size: 0.75rem;
+  color: var(--color-text);
+  background: rgba(255, 209, 102, 0.15);
+  border: 1px solid var(--color-primary);
+  border-radius: 12px;
+  padding: 0.2rem 0.5rem;
+}
+
+.fav-preview-more {
+  font-size: 0.75rem;
+  color: var(--color-muted-light);
+  padding: 0.2rem 0;
+}
+
+.fav-manage-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.fav-manage-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.fav-manage-item:last-child {
+  border-bottom: none;
+}
+
+.fav-manage-name {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fav-manage-pts {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-secondary);
+  white-space: nowrap;
+}
+
+.fav-manage-delete {
+  background: none;
+  border: none;
+  color: var(--color-border);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.fav-manage-delete:hover {
+  color: var(--color-accent);
+}
+
 .profile-saved {
   text-align: center;
   padding: 0.5rem;
-  background: #f0fdf4;
-  color: #16a34a;
+  background: rgba(6, 214, 160, 0.1);
+  color: var(--color-success);
   border-radius: 8px;
   font-size: 0.85rem;
   font-weight: 500;

@@ -76,7 +76,7 @@ export default function RecipesPage() {
                 </div>
                 <div className="recipe-card-points">
                   <span className="rcp-num">{recipe.pointsPerServing}</span>
-                  <span className="rcp-label">pts/serving</span>
+                  <span className="rcp-label">Steps/serving</span>
                 </div>
               </div>
 

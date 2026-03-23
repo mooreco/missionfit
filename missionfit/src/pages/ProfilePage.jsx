@@ -226,7 +226,7 @@ export default function ProfilePage() {
         <div className="profile-card-title">Travel Mode</div>
         <div className="travel-toggle-row">
           <span className="travel-toggle-label">
-            {profile?.travelMode ? "Active — +10 daily points, extended grace" : "Off"}
+            {profile?.travelMode ? "Active — +10 daily Steps, extended grace" : "Off"}
           </span>
           <button className={`travel-switch ${profile?.travelMode ? "active" : ""}`} onClick={toggleTravelMode} />
         </div>
@@ -259,7 +259,7 @@ export default function ProfilePage() {
             {favorites.map((f) => (
               <div key={f.id} className="fav-manage-item">
                 <span className="fav-manage-name">{f.name}</span>
-                <span className="fav-manage-pts">{f.points} pts</span>
+                <span className="fav-manage-pts">{f.points} Steps</span>
                 <button className="fav-manage-delete" onClick={() => removeFavorite(f.id)}>✕</button>
               </div>
             ))}
@@ -352,8 +352,8 @@ export default function ProfilePage() {
           {editing ? <input type="text" value={form.displayName} onChange={(e) => setForm({ ...form, displayName: e.target.value })} /> : <span className="pf-value">{profile?.displayName}</span>}
         </div>
         <div className="profile-field">
-          <span className="pf-label">Daily Budget</span>
-          {editing ? <input type="number" min={1} max={100} value={form.dailyPointsBudget} onChange={(e) => setForm({ ...form, dailyPointsBudget: e.target.value })} /> : <span className="pf-value">{profile?.dailyPointsBudget} pts</span>}
+          <span className="pf-label">Daily Steps Budget</span>
+          {editing ? <input type="number" min={1} max={100} value={form.dailyPointsBudget} onChange={(e) => setForm({ ...form, dailyPointsBudget: e.target.value })} /> : <span className="pf-value">{profile?.dailyPointsBudget} Steps</span>}
         </div>
         <div className="profile-field">
           <span className="pf-label">Weigh-In Frequency</span>
@@ -382,6 +382,10 @@ export default function ProfilePage() {
       </div>
 
       <button className="profile-btn danger" onClick={signOut}>Sign Out</button>
+
+      <p className="profile-disclaimer">
+        MissionFit is an independent project. It is not affiliated with, endorsed by, or connected to WW International, Inc.
+      </p>
 
       {/* Measurement Modal */}
       {showMeasurements && (

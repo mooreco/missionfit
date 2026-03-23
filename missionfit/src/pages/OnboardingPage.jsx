@@ -95,7 +95,7 @@ export default function OnboardingPage() {
           </div>
 
           <div className="form-field">
-            <label htmlFor="dailyBudget">Daily Points Budget</label>
+            <label htmlFor="dailyBudget">Daily Steps Budget</label>
             <input
               id="dailyBudget"
               type="number"

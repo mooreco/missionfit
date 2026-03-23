@@ -115,7 +115,7 @@ export default function WeighInPage() {
       {showRecalc && suggestedBudget && (
         <div className="budget-recalc-prompt">
           <div className="budget-recalc-text">
-            You've made great progress! Your suggested daily budget is now <strong>{suggestedBudget} points</strong>.
+            You've made great progress! Your suggested daily budget is now <strong>{suggestedBudget} Steps</strong>.
           </div>
           <div className="budget-recalc-actions">
             <button className="recalc-update" onClick={handleUpdateBudget}>Update</button>

@@ -62,7 +62,7 @@ export function getCoachingTip(state) {
   // Priority 4: Over daily budget today
   if (todayPoints > dailyBudget) {
     return {
-      tip: "One meal doesn't define your mission. Tomorrow is a fresh set of points.",
+      tip: "One meal doesn't define your mission. Tomorrow is a fresh set of Steps.",
       context: "over-budget",
     };
   }

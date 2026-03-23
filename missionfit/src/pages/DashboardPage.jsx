@@ -225,17 +225,17 @@ export default function DashboardPage() {
           </svg>
           <div className="ring-text">
             <span className="ring-number" style={{ color: ringColor }}>{remaining}</span>
-            <span className="ring-label">pts left</span>
+            <span className="ring-label">Steps left</span>
           </div>
         </div>
         <span className="ring-detail">
-          {todayPoints} of {dailyBudget} used
+          {todayPoints} of {dailyBudget} Steps used
           {travelBonus > 0 && ` (${baseBudget} + ${travelBonus} travel)`}
         </span>
 
         <div className="weekly-indicator">
           <div className="weekly-label">
-            <span>Weekly: {weekly.weeklyRemaining} / {weekly.weeklyTotal} remaining</span>
+            <span>Weekly Steps: {weekly.weeklyRemaining} / {weekly.weeklyTotal} remaining</span>
           </div>
           <div className="weekly-track">
             <div className="weekly-fill" style={{ width: `${Math.min(weeklyPct, 100)}%`, background: weeklyColor }} />
@@ -250,7 +250,7 @@ export default function DashboardPage() {
           {recentFoods.map((food, i) => (
             <button key={i} className="quick-chip" onClick={() => quickLog(food)}>
               {food.name}
-              <span className="qc-pts">{food.points}pt</span>
+              <span className="qc-pts">{food.points}s</span>
             </button>
           ))}
           <button className="quick-chip add-btn" onClick={() => navigate("/log")}>

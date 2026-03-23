@@ -151,7 +151,7 @@ export default function MealPlanPage() {
               <div className="day-card-header">
                 <span className="day-date">{displayDate(dateStr)}</span>
                 <span className={`day-points ${overBudget ? "over" : ""}`}>
-                  {dayPoints} / {dailyBudget} pts
+                  {dayPoints} / {dailyBudget} Steps
                 </span>
               </div>
               {MEAL_SLOTS.map((slot) => {
@@ -170,7 +170,7 @@ export default function MealPlanPage() {
                             <div key={mi} className="meal-item">
                               <span className="meal-item-name">{meal.name}</span>
                               <span className="meal-item-pts">
-                                {(meal.pointsPerServing || 0) * (meal.servings || 1)} pts
+                                {(meal.pointsPerServing || 0) * (meal.servings || 1)} Steps
                               </span>
                               <button className="meal-item-remove" onClick={() => removeMeal(dateStr, realIndex)}>✕</button>
                             </div>
@@ -198,7 +198,7 @@ export default function MealPlanPage() {
                   {recipes.map((r) => (
                     <button key={r.id} className="modal-recipe-item" onClick={() => handleAddFromRecipe(r, addingTo.slot, addingTo.dateStr)}>
                       <span>{r.name}</span>
-                      <span className="modal-recipe-pts">{r.pointsPerServing} pts</span>
+                      <span className="modal-recipe-pts">{r.pointsPerServing} Steps</span>
                     </button>
                   ))}
                 </div>
@@ -207,7 +207,7 @@ export default function MealPlanPage() {
             <h3>Quick Add</h3>
             <div className="modal-custom">
               <input type="text" placeholder="Meal name" value={customName} onChange={(e) => setCustomName(e.target.value)} />
-              <input type="number" placeholder="Points" min="0" value={customPoints} onChange={(e) => setCustomPoints(e.target.value)} />
+              <input type="number" placeholder="Steps" min="0" value={customPoints} onChange={(e) => setCustomPoints(e.target.value)} />
               <button className="modal-custom-add" onClick={() => handleAddCustom(addingTo.slot, addingTo.dateStr)} disabled={!customName.trim()}>Add</button>
             </div>
             <button className="modal-close" onClick={() => setAddingTo(null)}>Cancel</button>

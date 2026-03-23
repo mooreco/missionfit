@@ -1,6 +1,6 @@
 # MissionFit: The Long Walk
 
-A personal weight loss tracking app with a custom 7-factor points system.
+A personal weight loss tracking app with a custom 7-factor Steps system.
 
 ## Setup
 
@@ -44,3 +44,7 @@ npm run dev
 | `VITE_FIREBASE_MESSAGING_SENDER_ID` | Firebase messaging sender ID |
 | `VITE_FIREBASE_APP_ID` | Firebase app ID |
 | `VITE_FIREBASE_MEASUREMENT_ID` | Firebase analytics measurement ID |
+
+## Disclaimer
+
+MissionFit is an independent project. It is not affiliated with, endorsed by, or connected to WW International, Inc.

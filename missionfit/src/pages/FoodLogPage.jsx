@@ -164,9 +164,9 @@ export default function FoodLogPage() {
 
         <div className="budget-bar">
           <span className={`budget-remaining ${remainingPoints < 0 ? "over" : "ok"}`}>
-            {remainingPoints} pts left
+            {remainingPoints} Steps left
           </span>
-          <span className="budget-detail">{totalPoints} / {dailyBudget} used</span>
+          <span className="budget-detail">{totalPoints} / {dailyBudget} Steps used</span>
         </div>
 
         <div className="budget-progress">
@@ -174,13 +174,13 @@ export default function FoodLogPage() {
         </div>
       </div>
 
-      {/* Weekly points banner */}
+      {/* Weekly Steps banner */}
       {isOverBudget && (
         <div className={`weekly-banner ${weekly.weeklyRemaining <= 0 ? "exhausted" : ""}`}>
           {weekly.weeklyRemaining > 0 ? (
-            <>Used {todayOverage} weekly point{todayOverage !== 1 ? "s" : ""} today. {weekly.weeklyRemaining} remaining this week.</>
+            <>Used {todayOverage} weekly Step{todayOverage !== 1 ? "s" : ""} today. {weekly.weeklyRemaining} remaining this week.</>
           ) : (
-            <>Weekly points used up. Fresh start Monday!</>
+            <>Weekly Steps used up. Fresh start Monday!</>
           )}
         </div>
       )}
@@ -207,7 +207,7 @@ export default function FoodLogPage() {
                     {SLOT_LABELS[slot]}
                   </span>
                   <div className="slot-header-right">
-                    {slotPts > 0 && <span className="slot-pts">{slotPts} pts</span>}
+                    {slotPts > 0 && <span className="slot-pts">{slotPts} Steps</span>}
                     <button className="slot-add-btn" onClick={() => openAddModal(slot)}>+</button>
                   </div>
                 </div>
@@ -223,7 +223,7 @@ export default function FoodLogPage() {
                           {isFavorited(entry.name) ? "★" : "☆"}
                         </button>
                         <span className="entry-name">{entry.name}</span>
-                        <span className="entry-points">{entry.points} pts</span>
+                        <span className="entry-points">{entry.points} Steps</span>
                         <button className="entry-delete" onClick={() => deleteEntry(entry.id)} aria-label={`Delete ${entry.name}`}>&times;</button>
                       </div>
                     ))}
@@ -261,7 +261,7 @@ export default function FoodLogPage() {
                       {favorites.map((fav) => (
                         <button key={fav.id} className="chip fav-chip" onClick={() => handleAddFavorite(fav)}>
                           {fav.name}
-                          <span className="chip-pts">{fav.points}pt</span>
+                          <span className="chip-pts">{fav.points}s</span>
                         </button>
                       ))}
                     </div>
@@ -278,7 +278,7 @@ export default function FoodLogPage() {
                       {recipes.map((r) => (
                         <button key={r.id} className="chip recipe-chip" onClick={() => handleAddRecipe(r)}>
                           {r.name}
-                          <span className="chip-pts">{r.pointsPerServing}pt</span>
+                          <span className="chip-pts">{r.pointsPerServing}s</span>
                         </button>
                       ))}
                     </div>
@@ -293,7 +293,7 @@ export default function FoodLogPage() {
                       {recentFoods.map((food, i) => (
                         <button key={i} className="chip" onClick={() => handleAddRecent(food)}>
                           {food.name}
-                          <span className="chip-pts">{food.points}pt</span>
+                          <span className="chip-pts">{food.points}s</span>
                         </button>
                       ))}
                     </div>
@@ -302,7 +302,7 @@ export default function FoodLogPage() {
 
                 {/* Zero point */}
                 <div className="add-modal-section">
-                  <h3>Zero Point</h3>
+                  <h3>Free Fuel</h3>
                   <div className="add-modal-chips">
                     {ZERO_POINT_FOODS.map((name) => (
                       <button key={name} className="chip zero" onClick={() => handleAddZero(name)}>{name}</button>
@@ -332,10 +332,10 @@ export default function FoodLogPage() {
                   <input type="checkbox" checked={form.purine} onChange={(e) => updateField("purine", e.target.checked)} />
                   High purine (organ meats, shellfish, etc.)
                 </label>
-                <div className="points-preview">Points: {previewPoints}</div>
+                <div className="points-preview">Steps: {previewPoints}</div>
                 <div className="add-food-actions">
                   <button type="button" className="btn-cancel" onClick={() => setShowCustomForm(false)}>Back</button>
-                  <button type="submit" className="btn-add" disabled={!form.name.trim()}>Add ({previewPoints} pts)</button>
+                  <button type="submit" className="btn-add" disabled={!form.name.trim()}>Add ({previewPoints} Steps)</button>
                 </div>
               </form>
             )}

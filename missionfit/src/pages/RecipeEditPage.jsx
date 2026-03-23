@@ -145,12 +145,12 @@ export default function RecipeEditPage() {
       <div className="recipe-points-preview">
         <div className="rpp-item">
           <span className="rpp-num">{totalPoints}</span>
-          <span className="rpp-label">total pts</span>
+          <span className="rpp-label">total Steps</span>
         </div>
         <div className="rpp-divider" />
         <div className="rpp-item">
           <span className="rpp-num">{pointsPerServing}</span>
-          <span className="rpp-label">per serving</span>
+          <span className="rpp-label">Steps/serving</span>
         </div>
         {hasPurine && (
           <div className="rpp-purine-warn">⚠️ Contains high-purine ingredient</div>

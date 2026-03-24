@@ -338,18 +338,26 @@ export default function DashboardPage() {
         </div>
       )}
 
-      {/* Weight trend */}
-      {weighIns.length > 0 && (
-        <div className="dash-card" onClick={() => navigate("/weigh-in")} style={{ cursor: "pointer" }}>
-          <div className="dash-card-title">Weight Trend</div>
-          <WeightTrendChart weighIns={weighIns} goalWeight={goalWeight} />
+      {/* Weight trend + Log Weight */}
+      {weighIns.length > 0 ? (
+        <div className="dash-card">
+          <div className="dash-card-title-row">
+            <span className="dash-card-title" style={{ marginBottom: 0 }}>Weight Trend</span>
+            <button className="dash-weighin-btn" onClick={() => navigate("/weigh-in")}>
+              Log Weight
+            </button>
+          </div>
+          <div onClick={() => navigate("/weigh-in")} style={{ cursor: "pointer", marginTop: "0.5rem" }}>
+            <WeightTrendChart weighIns={weighIns} goalWeight={goalWeight} />
+          </div>
         </div>
-      )}
-
-      {weighIns.length === 0 && (
-        <div className="dash-card" onClick={() => navigate("/weigh-in")} style={{ cursor: "pointer" }}>
+      ) : (
+        <div className="dash-card">
           <div className="dash-card-title">Weigh In</div>
-          <div className="milestone-empty">Tap here to log your first weigh-in!</div>
+          <div className="milestone-empty">Log your first weigh-in to start tracking!</div>
+          <button className="dash-weighin-btn full" onClick={() => navigate("/weigh-in")}>
+            Log Weight
+          </button>
         </div>
       )}
 

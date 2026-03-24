@@ -155,6 +155,7 @@ export default function FoodLogPage() {
             <button className="foodlog-menu-btn" onClick={() => setShowMenu((v) => !v)} aria-label="Menu">⋯</button>
             {showMenu && (
               <div className="foodlog-dropdown">
+                <button onClick={() => { setShowMenu(false); navigate("/weigh-in"); }}>Log Weight</button>
                 <button onClick={() => { setShowMenu(false); navigate("/meal-plan"); }}>Weekly Plan</button>
                 <button onClick={() => { setShowMenu(false); navigate("/recipes"); }}>Recipes</button>
               </div>

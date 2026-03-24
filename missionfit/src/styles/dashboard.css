@@ -43,6 +43,37 @@
   margin-bottom: 0.75rem;
 }
 
+.dash-card-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0;
+}
+
+.dash-weighin-btn {
+  padding: 0.35rem 0.75rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--color-secondary);
+  color: var(--color-white);
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: opacity 0.15s;
+}
+
+.dash-weighin-btn:active {
+  opacity: 0.85;
+}
+
+.dash-weighin-btn.full {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
 /* Points ring */
 .points-ring-section {
   display: flex;
